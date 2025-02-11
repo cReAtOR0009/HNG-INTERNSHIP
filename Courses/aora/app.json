@@ -13,14 +13,15 @@
       "bundleIdentifier": "com.creatorsage.Aora",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
+      },
+      "package":"com.creator.aora"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.creatorsage.Aora"
+       "package":"com.creator.aora"
     },
     "web": {
       "bundler": "metro",

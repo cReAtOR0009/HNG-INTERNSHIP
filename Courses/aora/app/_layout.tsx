@@ -1,10 +1,11 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { useEffect } from 'react';
+import 'react-native-reanimated';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import GlobalProvider from "../context/GlobalProvider"
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -36,6 +37,8 @@ export default function RootLayout() {
   }
 
   return (
+    <GlobalProvider>
+
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -43,6 +46,7 @@ export default function RootLayout() {
         <Stack.Screen name="search/[query]" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
+    </GlobalProvider>
     
   );
 }

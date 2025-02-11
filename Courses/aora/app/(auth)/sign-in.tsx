@@ -1,26 +1,51 @@
-import { View, Text, ScrollView, Image } from 'react-native'
+import { View, Text, ScrollView, Image, Alert } from 'react-native'
 import React, {useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {images} from "../../constants"
 import FormField from "../../components/FormField"
 import CustomButton from '../../components/CustomButton'
-import { Link } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
+import { SignIn as signin } from '../../lib/appwrite';
+import { Try } from 'expo-router/build/views/Try'
 
 
 const SignIn = () => {
-   const [form, setForm] = useState({
+
+     const router = useRouter()
+
+     const [form, setForm] = useState({
       email:"",
       password:""  
       })
+
+     const [submitting, setIsSubmitting] = useState(false)
 
   
       const handlesetForm = (name:any, value:String) => {
         setForm(({ ...form, [name]: value }));
       };
 
-      const handlePress = () => {
-        console.log("form------", form)
-      }
+       const handleSubmit = async () => {
+         if ( !form.password || !form.email) {
+            Alert.alert("Error", "Ensure all fields are properly filled")
+         }
+         
+
+         try {
+          
+           setIsSubmitting(true)
+           await signin(form.email, form.password)
+           setIsSubmitting(false)
+       
+           router.replace("/home")
+         } catch (error) {
+          Alert.alert("Error", error.message);
+          setIsSubmitting(false)
+          // console.log(first)
+         }
+     
+     
+       }
 
 
   return (
@@ -53,10 +78,10 @@ const SignIn = () => {
         />
 
         <CustomButton  title="Sign in" 
-          handlePress={handlePress}
+          handlePress={handleSubmit}
            containerStyles="w-full mt-7"
           textStyles=""
-          isLoading = {false}/>
+          isLoading = {submitting}/>
 
         <View className='justify-center pt-5 flex-row gap-2'>
           <Text className='text-lg text-gray-100 font-pregular'>Dont have an account?</Text>

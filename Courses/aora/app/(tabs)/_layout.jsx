@@ -6,7 +6,7 @@ import icon from "../../constants/icons";
 const TabIcon = ({ title, icon, color, name, focused, ...props }) => {
 //   console.log("name---", name);
 //   console.log("props---", props);
-  console.log("focused---", focused);
+  // console.log("focused---", focused);
   return (
     <View className="items-center justify-center">
       <Image

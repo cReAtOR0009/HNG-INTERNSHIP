@@ -1,28 +1,56 @@
-import { View, Text, ScrollView, Image } from 'react-native'
+import { View, Text, ScrollView, Image, Alert } from 'react-native'
 import React, {useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {images} from "../../constants"
 import FormField from "../../components/FormField"
 import CustomButton from '../../components/CustomButton'
-import { Link } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
+import {createUser, signOut, getCurrentUser} from "../../lib/appwrite"
 
 
 const SignUp = () => {
-   const [form, setForm] = useState({
+
+  const router = useRouter()
+
+  const [form, setForm] = useState({
       username:"",
       email:"",
       password:"",
       confirm_password:""
       })
+    
+  const [submitting, setIsSubmitting] = useState(false)
+
+  const handlesetForm = (name:any, value:String) => {
+    setForm(({ ...form, [name]: value }));
+  };
 
   
-      const handlesetForm = (name:any, value:String) => {
-        setForm(({ ...form, [name]: value }));
-      };
+  const handleSubmit = async () => {
+    // await signOut()
+    if (!form.username || !form.password || !form.email || !form.confirm_password) {
+      return  Alert.alert("Error", "Ensure all fields are properly filled") 
+    }
 
-      const handlePress = () => {
-        console.log("form------", form)
-      }
+    if (form.password !== form.confirm_password) {
+    return  Alert.alert("Error", "passwords dont match")
+    }
+
+    try {
+      
+      setIsSubmitting(true)
+      await createUser(form.email, form.password, form.username)
+      setIsSubmitting(false)
+  
+      router.replace("/home")
+
+    } catch (error) {
+         Alert.alert("Error", error.message);
+          setIsSubmitting(false)
+    }
+
+
+  }
 
   return (
     <SafeAreaView className="h-full bg-primary">
@@ -54,7 +82,7 @@ const SignUp = () => {
         />
          <FormField
           title="Password"
-          value={form.email}
+          value={form.password}
           handleChangeText ={handlesetForm}
           placeholder="your Password Here"
           styles="mt-5"
@@ -64,7 +92,7 @@ const SignUp = () => {
 
 <FormField
           title="Confirm_Password"
-          value={form.email}
+          value={form.confirm_password}
           handleChangeText ={handlesetForm}
           placeholder="type your Password Here again"
           styles="mt-5"
@@ -73,10 +101,10 @@ const SignUp = () => {
         />
 
 <CustomButton  title="Sign Up" 
-          handlePress={handlePress}
+          handlePress={handleSubmit}
           containerStyles="mt-7 w-full text-center"
           textStyles=" "
-          isLoading = {false}/>
+          isLoading = {submitting}/>
 
        <View className='justify-center pt-5 flex-row gap-2'>
                 <Text className='text-lg text-gray-100 font-pregular'>Have an account already?</Text>
@@ -85,6 +113,14 @@ const SignUp = () => {
               </View>
 
       </ScrollView>
+
+      {/* import { Client, Account, ID } from 'react-native-appwrite';
+
+const client = new Client()
+    .setProject('67a77ae9002e22542577')
+    .setPlatform('com.creator.aora'); */}
+    {/* // "package": "com.creatorsage.Aora" */}
+
         <Text>
 
       SignIn

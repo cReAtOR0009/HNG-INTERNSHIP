@@ -11,7 +11,7 @@ import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 const FormField = ({ title, value, handleChangeText, placeholder, styles, keyboardType, type }:any) => {
 
   const [isSecure, setIsSecure] = useState(type==="password" ?true:false)
-  console.log("isSecure---------",title, isSecure)
+  // console.log("isSecure---------",title, isSecure)
   const name = title.toLocaleLowerCase()
 
   // const isSecure = type==="password"?true:false
