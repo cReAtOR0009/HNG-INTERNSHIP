@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "counryLama",
+    "slug": "counryLama",
+    "version": "1.0.0",
+    "plugins": [
+      "expo-router"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "37f7d7a5-bff9-47c3-8461-45ba509baad3"
+      }
+    }
+  }
+}

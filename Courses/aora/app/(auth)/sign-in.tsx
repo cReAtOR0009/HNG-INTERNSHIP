@@ -38,7 +38,7 @@ const SignIn = () => {
            setIsSubmitting(false)
        
            router.replace("/home")
-         } catch (error) {
+         } catch (error:any) {
           Alert.alert("Error", error.message);
           setIsSubmitting(false)
           // console.log(first)

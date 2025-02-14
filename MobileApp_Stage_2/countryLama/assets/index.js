@@ -1,0 +1,57 @@
+import icons from "./constants.js/icons";
+
+const continents = [
+//   { label: "All Continents", value: "" },
+  { label: "Africa", value: "Africa" },
+  { label: "Antarctica", value: "Antarctica" },
+  { label: "Asia", value: "Asia" },
+  { label: "Australia", value: "Australia" },
+  { label: "Europe", value: "Europe" },
+  { label: "North America", value: "North America" },
+  { label: "South America", value: "South America" },
+  
+];
+
+const timezones = [
+  { label: "UTC-12:00", value: "UTC-12:00" },
+  { label: "UTC-11:00", value: "UTC-11:00" },
+  { label: "UTC-10:00", value: "UTC-10:00" },
+  { label: "UTC-09:30", value: "UTC-09:30" },
+  { label: "UTC-09:00", value: "UTC-09:00" },
+  { label: "UTC-08:00", value: "UTC-08:00" },
+  { label: "UTC-07:00", value: "UTC-07:00" },
+  { label: "UTC-06:00", value: "UTC-06:00" },
+  { label: "UTC-05:00", value: "UTC-05:00" },
+  { label: "UTC-04:30", value: "UTC-04:30" },
+  { label: "UTC-04:00", value: "UTC-04:00" },
+  { label: "UTC-03:30", value: "UTC-03:30" },
+  { label: "UTC-03:00", value: "UTC-03:00" },
+  { label: "UTC-02:00", value: "UTC-02:00" },
+  { label: "UTC-01:00", value: "UTC-01:00" },
+  { label: "UTC±00:00", value: "UTC±00:00" },
+  { label: "UTC+01:00", value: "UTC+01:00" },
+  { label: "UTC+02:00", value: "UTC+02:00" },
+  { label: "UTC+03:00", value: "UTC+03:00" },
+  { label: "UTC+03:30", value: "UTC+03:30" },
+  { label: "UTC+04:00", value: "UTC+04:00" },
+  { label: "UTC+04:30", value: "UTC+04:30" },
+  { label: "UTC+05:00", value: "UTC+05:00" },
+  { label: "UTC+05:30", value: "UTC+05:30" },
+  { label: "UTC+05:45", value: "UTC+05:45" },
+  { label: "UTC+06:00", value: "UTC+06:00" },
+  { label: "UTC+06:30", value: "UTC+06:30" },
+  { label: "UTC+07:00", value: "UTC+07:00" },
+  { label: "UTC+08:00", value: "UTC+08:00" },
+  { label: "UTC+08:45", value: "UTC+08:45" },
+  { label: "UTC+09:00", value: "UTC+09:00" },
+  { label: "UTC+09:30", value: "UTC+09:30" },
+  { label: "UTC+10:00", value: "UTC+10:00" },
+  { label: "UTC+10:30", value: "UTC+10:30" },
+  { label: "UTC+11:00", value: "UTC+11:00" },
+  { label: "UTC+12:00", value: "UTC+12:00" },
+  { label: "UTC+12:45", value: "UTC+12:45" },
+  { label: "UTC+13:00", value: "UTC+13:00" },
+  { label: "UTC+14:00", value: "UTC+14:00" },
+  
+];
+export { icons, continents, timezones };

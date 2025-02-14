@@ -5,7 +5,7 @@ import {images} from "../../constants"
 import FormField from "../../components/FormField"
 import CustomButton from '../../components/CustomButton'
 import { Link, useRouter } from 'expo-router'
-import {createUser, signOut, getCurrentUser} from "../../lib/appwrite"
+import {createUser, getCurrentUser} from "../../lib/appwrite"
 
 
 const SignUp = () => {
@@ -44,7 +44,7 @@ const SignUp = () => {
   
       router.replace("/home")
 
-    } catch (error) {
+    } catch (error:any) {
          Alert.alert("Error", error.message);
           setIsSubmitting(false)
     }
