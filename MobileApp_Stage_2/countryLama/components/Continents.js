@@ -1,32 +1,36 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setContinent, removeContinent } from "../redux/features/filterSlice";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import Feather from '@expo/vector-icons/Feather';
+import Feather from "@expo/vector-icons/Feather";
 
 const Continent = ({ value, isSelected, toggleContinent }) => {
-  const theme = useSelector((state) => state.theme.theme)
+  const theme = useSelector((state) => state.theme.theme);
   return (
     <TouchableOpacity onPress={() => toggleContinent(value)}>
-      <View className="flex flex-row justify-between items-center pb-2">
-        <Text className={`${theme === "light" ? "text-[#1C1917]" : "text-white"} text-base `}>{value}</Text>
+      <View className="flex flex-row justify-between items-center pb-4">
+        <Text
+          className={`font-axiregular font-normal text-base ${
+            theme === "light" ? "text-[#667085]" : "text-[#667085]"
+          } `}
+        >
+          {value}
+        </Text>
         <AntDesign
           name={`${isSelected ? "checkcircle" : "checkcircleo"}`}
           size={20}
-          color={theme ==="light"?"black":"white"}
+          color={theme === "light" ? "#667085" : "#667085"}
         />
       </View>
     </TouchableOpacity>
   );
 };
 
-const Continents = ({ continents }) => {
-  const [isOpen, setIsOpen] = useState(false);
-    const theme = useSelector((state) => state.theme.theme);
+const Continents = ({ continents, isOpen, onToggle }) => {
+  const theme = useSelector((state) => state.theme.theme);
   const dispatch = useDispatch();
   const selectedContinents = useSelector((state) => state.filters.continents);
-  
 
   // Toggle continent selection
   const toggleContinent = (continent) => {
@@ -42,14 +46,20 @@ const Continents = ({ continents }) => {
   return (
     <View>
       <TouchableOpacity
-        onPress={() => setIsOpen(!isOpen)}
+        onPress={onToggle}
         className={`flex flex-row justify-between items-center py-2`}
       >
-        <Text className={`${theme === "light" ? "text-[#1C1917]" : "text-white"} font-bold text-xl`}>Continents</Text>
+        <Text
+          className={`font-axiregular text-base font-bold ${
+            theme === "light" ? "text-[#1C1917]" : "text-[#F2F4F7]"
+          } font-bold text-xl`}
+        >
+          Continents
+        </Text>
         <Feather
           name={`${isOpen ? "chevron-up" : "chevron-down"}`}
           size={24}
-          color= {theme ==="light"?"black":"white"}
+          color={theme === "light" ? "black" : "white"}
         />
       </TouchableOpacity>
       {isOpen && (

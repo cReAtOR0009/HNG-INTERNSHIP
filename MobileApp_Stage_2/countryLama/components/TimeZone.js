@@ -5,7 +5,7 @@ import {
   ScrollView,
   FlatList,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { setTimeZone, removeTimeZone } from "../redux/features/filterSlice";
 import { useDispatch, useSelector } from "react-redux";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -15,24 +15,25 @@ const TimeZone = ({ value, isSelected, toggleTimeZone }) => {
   const theme = useSelector((state) => state.theme.theme);
   return (
     <TouchableOpacity onPress={() => toggleTimeZone(value)}>
-      <View className="flex flex-row justify-between items-center py-2 mb-2 ml-">
+      <View className="flex flex-row justify-between items-center pb-4">
         <Text
-          className={`${theme === "light" ? "text-[#1C1917]" : "text-white"} font-bold text-sm` }
+          className={`font-axiregular font-normal text-base ${
+            theme === "light" ? "text-[#667085]" : "text-[#667085]"
+          } `}
         >
           {value}
         </Text>
         <AntDesign
           name={`${isSelected ? "checkcircle" : "checkcircleo"}`}
           size={20}
-          color={theme ==="light"?"black":"white"}
+          color={theme === "light" ? "#667085" : "#667085"}
         />
       </View>
     </TouchableOpacity>
   );
 };
 
-const TimeZones = ({ checkLists }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const TimeZones = ({ checkLists, isOpen, onToggle }) => {
   const dispatch = useDispatch();
   const selectedTimeZones = useSelector((state) => state.filters.timeZone);
   const theme = useSelector((state) => state.theme.theme);
@@ -51,18 +52,24 @@ const TimeZones = ({ checkLists }) => {
   return (
     <View>
       <TouchableOpacity
-        onPress={() => setIsOpen(!isOpen)}
+        onPress={onToggle}
         className="flex flex-row justify-between items-center py-2"
       >
-        <Text className={`${theme === "light" ? "text-[#1C1917]" : "text-white"} font-bold text-xl`}>Time Zone</Text>
+        <Text
+          className={`font-axiregular text-base font-bold ${
+            theme === "light" ? "text-[#1C1917]" : "text-[#F2F4F7]"
+          } font-bold text-xl`}
+        >
+          Time Zone
+        </Text>
         <Feather
           name={`${isOpen ? "chevron-up" : "chevron-down"}`}
           size={24}
-          color={theme ==="light"?"black":"white"}
+          color={theme === "light" ? "black" : "white"}
         />
       </TouchableOpacity>
       {isOpen && (
-        <ScrollView className="max-h-[75vh]">
+        <ScrollView className="">
           <FlatList
             data={checkLists}
             keyExtractor={(item) => item.value}

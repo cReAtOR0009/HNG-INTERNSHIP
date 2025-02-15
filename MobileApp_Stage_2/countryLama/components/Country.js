@@ -16,8 +16,8 @@ const theme = useSelector((state) => state.theme.theme)
           />
         {/* </View> */}
         <View className="flex justify-between text-sm ">
-          <Text className={`${theme === "light" ? "text-[#1C1917]" : "text-[#F2F4F7]"} flex-1 text-base`}>{name}</Text>
-          <Text className={`${theme === "light" ? "text-[#667085]" : "text-[#98A2B3]"} flex-1`} >{capital}</Text>
+          <Text className={`font-axiregular flex-1 text-sm font-normal ${theme === "light" ? "text-[#1C1917]" : "text-[#F2F4F7]"} `}>{name}</Text>
+          <Text className={`font-axiregular text-sm font-normal flex-1 ${theme === "light" ? "text-[#667085]" : "text-[#98A2B3]"}`} >{capital}</Text>
         </View>
       {/* </Link> */}
     </View>

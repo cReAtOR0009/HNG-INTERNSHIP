@@ -1,24 +1,21 @@
 import {
   FlatList,
-  Image,
   Modal,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  Animated,
 } from "react-native";
-import React, { useState } from "react";
-import { icons } from "../assets";
-import { setLanguage } from "../redux/features/filterSlice";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Feather from "@expo/vector-icons/Feather";
+import { setLanguage } from "../redux/features/filterSlice";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-const Language = ({ value, name,  addLanguage }) => {
+const Language = ({ value, name, native, addLanguage }) => {
   const selectedLanguage = useSelector((state) => state.filters.language);
   const isSelected = selectedLanguage.includes(value);
-
+  const theme = useSelector((state) => state.theme.theme);
 
   const handlePress = () => {
     addLanguage(value);
@@ -26,123 +23,128 @@ const Language = ({ value, name,  addLanguage }) => {
 
   return (
     <TouchableOpacity onPress={handlePress}>
-      <View className={`flex flex-row justify-between py-1 mb-2`}>
-        <Text>{name}</Text>
+      <View className="flex flex-row justify-between py-1 mb-">
+        <Text
+          className={`font-axiregular font-normal text-base ${
+            theme === "light" ? "text-[#667085]" : "text-[#F2F4F7]"
+          } `}
+        >
+          {native}
+        </Text>
         <AntDesign
           name={`${isSelected ? "checkcircle" : "checkcircleo"}`}
           size={20}
-          color="black"
+          color={theme === "light" ? "#667085" : "#667085"}
         />
       </View>
     </TouchableOpacity>
   );
 };
 
-const Languages = ({isOpenLanguage, setIsOpenLanguage}) => {
+const Languages = ({ isOpenLanguage, setIsOpenLanguage }) => {
   const theme = useSelector((state) => state.theme.theme);
-  const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const selectedLanguage = useSelector((state) => state.filters.language);
+  const slideAnim = useRef(new Animated.Value(300)).current; // Initial value for slide-up animation
 
+  const languages = [
+    { name: "English", value: "en", native: "English" },
+    { name: "Arabic", value: "ara", native: "العربية" },
+    { name: "Breton", value: "bre", native: "Brezhoneg" },
+    { name: "Czech", value: "ces", native: "Čeština" },
+    { name: "German", value: "deu", native: "Deutsch" },
+    { name: "Estonian", value: "est", native: "Eesti" },
+    { name: "Finnish", value: "fin", native: "Suomi" },
+    { name: "French", value: "fra", native: "Français" },
+    { name: "Croatian", value: "hrv", native: "Hrvatski" },
+    { name: "Hungarian", value: "hun", native: "Magyar" },
+    { name: "Italian", value: "ita", native: "Italiano" },
+    { name: "Japanese", value: "jpn", native: "日本語" },
+    { name: "Korean", value: "kor", native: "한국어" },
+    { name: "Persian", value: "per", native: "فارسی" },
+    { name: "Polish", value: "pol", native: "Polski" },
+    { name: "Portuguese", value: "por", native: "Português" },
+    { name: "Russian", value: "rus", native: "Русский" },
+    { name: "Slovak", value: "slk", native: "Slovenčina" },
+    { name: "Spanish", value: "spa", native: "Español" },
+    { name: "Serbian", value: "srp", native: "Српски" },
+    { name: "Swedish", value: "swe", native: "Svenska" },
+    { name: "Turkish", value: "tur", native: "Türkçe" },
+    { name: "Urdu", value: "urd", native: "اردو" },
+    { name: "Chinese", value: "zho", native: "中文" }
+  ];
+  
+
+  // Add or remove language
   const addLanguage = (language) => {
     if (selectedLanguage !== language) {
       dispatch(setLanguage(language));
     }
-
-
   };
-  const languages = [
-    { name: "English", value: "en" },
-    { name: "Arabic", value: "ara" },
-    { name: "Breton", value: "bre" },
-    { name: "Czech", value: "ces" },
-    { name: "German", value: "deu" },
-    { name: "Estonian", value: "est" },
-    { name: "Finnish", value: "fin" },
-    { name: "French", value: "fra" },
-    { name: "Croatian", value: "hrv" },
-    { name: "Hungarian", value: "hun" },
-    { name: "Italian", value: "ita" },
-    { name: "Japanese", value: "jpn" },
-    { name: "Korean", value: "kor" },
-    { name: "Persian", value: "per" },
-    { name: "Polish", value: "pol" },
-    { name: "Portuguese", value: "por" },
-    { name: "Russian", value: "rus" },
-    { name: "Slovak", value: "slk" },
-    { name: "Spanish", value: "spa" },
-    { name: "Serbian", value: "srp" },
-    { name: "Swedish", value: "swe" },
-    { name: "Turkish", value: "tur" },
-    { name: "Urdu", value: "urd" },
-    { name: "Chinese", value: "zho" },
-  ];
-  
+
+  // Slide-in animation when modal opens
+  useEffect(() => {
+    if (isOpenLanguage) {
+      Animated.timing(slideAnim, {
+        toValue: 0, // Slide up to 0
+        duration: 300, // Animation duration
+        useNativeDriver: true, // Use native driver for better performance
+      }).start();
+    } else {
+      Animated.timing(slideAnim, {
+        toValue: 300, // Slide down to 300
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [isOpenLanguage]);
 
   return (
     <Modal
       visible={isOpenLanguage}
-      animationType="fade"
-      transparent={false}
+      transparent={true}
+      animationType="none" // Disable default modal animation
       onRequestClose={() => setIsOpenLanguage(false)}
     >
-      {isOpenLanguage && (
-        <ScrollView className={`max-h-[75vh]- px-4`}>
-          <FlatList
-            data={languages}
-            keyExtractor={(item) => item.name}
-            renderItem={({ item }) => (
-              <Language {...item} addLanguage={addLanguage} key={item.value} />
-            )}
-            ListHeaderComponent={() => (
-              <View className={`flex flex-row justify-between my-4`}>
-                <Text
-                  className={`${
-                    theme === "light" ? "text-[#1C1917]" : "text-[#F2F4F7]"
-                  } text-lg font-bold`}
-                >
-                  Languages
-                </Text>
-
-                <TouchableOpacity onPress={() => setIsOpenLanguage(false)}>
-                  <AntDesign
-                    name={`${theme ? "closesquareo" : "closesquare"}`}
-                    size={24}
-                    color="black"
-                  />
-                </TouchableOpacity>
-              </View>
-            )}
-            scrollEnabled={false}
-          />
-
-          {/* <View className={`flex flex-row justify-between mb-4`}>
+      <View className="flex-1 justify-end bg-black/50">
+        <Animated.View
+          style={{
+            transform: [{ translateY: slideAnim }], // Apply slide animation
+            maxHeight: "80%", // Ensure modal doesn't overflow the screen
+          }}
+          className={`min-h-[100vh] w-full bg-white rounded-t-2xl p-6 ${
+            theme === "light" ? "bg-white" : "bg-[#000F24]"
+          }`}
+        >
+          <View className="flex flex-row justify-between items-center mb-4 ">
             <Text
-              className={`${
-                theme === "light" ? "text-[#1C1917]" : "text-[#F2F4F7]"
-              } text-lg font-bold`}
+              className={`font-axiregular text-lg font-bold ${
+                theme === "light" ? "text-black" : "text-[#F2F4F7]"
+              }`}
             >
               Languages
             </Text>
-
             <TouchableOpacity onPress={() => setIsOpenLanguage(false)}>
               <AntDesign
-                name={`${theme ? "closesquareo" : "closesquare"}`}
+                name={theme === "light" ? "closesquareo" : "closesquare"}
                 size={24}
-                color="black"
+                color={theme === "light" ? "black" : "white"}
               />
             </TouchableOpacity>
           </View>
 
-          {isOpen && (
-            <View>
-              {languages.map((language) => (
-                <Language {...language} addLanguage={addLanguage} />
-              ))}
-            </View>
-          )} */}
-        </ScrollView>
-      )}
+          <ScrollView className={``}>
+            <FlatList
+              data={languages}
+              keyExtractor={(item) => item.value}
+              renderItem={({ item }) => (
+                <Language {...item} addLanguage={addLanguage} />
+              )}
+              scrollEnabled={false} // Disable scrolling to prevent conflicts with parent ScrollView
+            />
+          </ScrollView>
+        </Animated.View>
+      </View>
     </Modal>
   );
 };

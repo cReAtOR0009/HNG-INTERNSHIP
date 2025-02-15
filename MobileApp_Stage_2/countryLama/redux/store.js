@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/counterSlice";
 import countryReducer from "./features/countrySlice";
 import filterReducer from "./features/filterSlice";
 import themeReducer from "./features/themeSlice";
