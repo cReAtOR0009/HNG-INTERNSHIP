@@ -11,6 +11,7 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLanguage } from "../redux/features/filterSlice";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Language = ({ value, name, native, addLanguage }) => {
   const selectedLanguage = useSelector((state) => state.filters.language);
@@ -71,9 +72,8 @@ const Languages = ({ isOpenLanguage, setIsOpenLanguage }) => {
     { name: "Swedish", value: "swe", native: "Svenska" },
     { name: "Turkish", value: "tur", native: "Türkçe" },
     { name: "Urdu", value: "urd", native: "اردو" },
-    { name: "Chinese", value: "zho", native: "中文" }
+    { name: "Chinese", value: "zho", native: "中文" },
   ];
-  
 
   // Add or remove language
   const addLanguage = (language) => {
@@ -100,52 +100,54 @@ const Languages = ({ isOpenLanguage, setIsOpenLanguage }) => {
   }, [isOpenLanguage]);
 
   return (
-    <Modal
-      visible={isOpenLanguage}
-      transparent={true}
-      animationType="none" // Disable default modal animation
-      onRequestClose={() => setIsOpenLanguage(false)}
-    >
-      <View className="flex-1 justify-end bg-black/50">
-        <Animated.View
-          style={{
-            transform: [{ translateY: slideAnim }], // Apply slide animation
-            maxHeight: "80%", // Ensure modal doesn't overflow the screen
-          }}
-          className={`min-h-[100vh] w-full bg-white rounded-t-2xl p-6 ${
-            theme === "light" ? "bg-white" : "bg-[#000F24]"
-          }`}
-        >
-          <View className="flex flex-row justify-between items-center mb-4 ">
-            <Text
-              className={`font-axiregular text-lg font-bold ${
-                theme === "light" ? "text-black" : "text-[#F2F4F7]"
-              }`}
-            >
-              Languages
-            </Text>
-            <TouchableOpacity onPress={() => setIsOpenLanguage(false)}>
-              <AntDesign
-                name={theme === "light" ? "closesquareo" : "closesquare"}
-                size={24}
-                color={theme === "light" ? "black" : "white"}
-              />
-            </TouchableOpacity>
-          </View>
+   
+      <Modal
+        visible={isOpenLanguage}
+        transparent={true}
+        animationType="none" // Disable default modal animation
+        onRequestClose={() => setIsOpenLanguage(false)}
+      >
+        <View className="flex-1 justify-end bg-black/50">
+          <Animated.View
+            style={{
+              transform: [{ translateY: slideAnim }], // Apply slide animation
+              maxHeight: "80%", // Ensure modal doesn't overflow the screen
+            }}
+            className={`h-full w-full bg-white rounded-t-2xl p-6 ${
+              theme === "light" ? "bg-white" : "bg-[#000F24]"
+            }`}
+          >
+            <View className="flex flex-row justify-between items-center mb-4 ">
+              <Text
+                className={`font-axiregular text-lg font-bold ${
+                  theme === "light" ? "text-black" : "text-[#F2F4F7]"
+                }`}
+              >
+                Languages
+              </Text>
+              <TouchableOpacity onPress={() => setIsOpenLanguage(false)}>
+                <AntDesign
+                  name={theme === "light" ? "closesquareo" : "closesquare"}
+                  size={24}
+                  color={theme === "light" ? "black" : "white"}
+                />
+              </TouchableOpacity>
+            </View>
 
-          <ScrollView className={``}>
-            <FlatList
-              data={languages}
-              keyExtractor={(item) => item.value}
-              renderItem={({ item }) => (
-                <Language {...item} addLanguage={addLanguage} />
-              )}
-              scrollEnabled={false} // Disable scrolling to prevent conflicts with parent ScrollView
-            />
-          </ScrollView>
-        </Animated.View>
-      </View>
-    </Modal>
+            <ScrollView className={``}>
+              <FlatList
+                data={languages}
+                keyExtractor={(item) => item.value}
+                renderItem={({ item }) => (
+                  <Language {...item} addLanguage={addLanguage} />
+                )}
+                scrollEnabled={false} // Disable scrolling to prevent conflicts with parent ScrollView
+              />
+            </ScrollView>
+          </Animated.View>
+        </View>
+      </Modal>
+    
   );
 };
 
