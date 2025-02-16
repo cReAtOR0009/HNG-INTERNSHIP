@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useLocalSearchParams } from "expo-router";
 import { filterData } from "../../utils/filterUtils";
 import CountryDetails from "../../components/country/CountryDetails";
+import { StatusBar } from "expo-status-bar";
 
 const Country = () => {
   const { name } = useLocalSearchParams();
@@ -34,6 +35,10 @@ const Country = () => {
       ) : (
         <Text className="text-red-500 mt-4 p-4">Country not found</Text>
       )}
+        <StatusBar
+              backgroundColor={theme == "light" ? "white" : "#000F24"}
+              style="light"
+            />
     </View>
   );
 };
