@@ -27,6 +27,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { resetFilters } from "../redux/features/filterSlice";
 import { icons } from "../assets";
+import { StatusBar } from "expo-status-bar";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ export default function Home() {
   );
   const groupedCountries = useMemo(
     () => groupCountries(filteredCountries),
-    [filteredCountries, filters]
+    [filteredCountries]
   );
 
   // Load saved theme on app start
@@ -92,32 +93,46 @@ export default function Home() {
   // Render loading state
   if (status === "loading") {
     return (
-      <View
+      <SafeAreaView
         className={`${
           theme === "light" ? "bg-white" : "bg-[#000F24]"
-        } flex-1 flex items-center justify-center bg-white dark:bg-[#000F24] `}
+        } flex-1 flex items-center justify-center`}
       >
         <ActivityIndicator size="large" color="#2563EB" />
-        <Text className="text-xl font-semibold mt-4 text-gray-700 dark:text-gray-300">
+        <Text
+          className={`${
+            theme === "light" ? "text-[#1C1917]" : "text-[#F2F4F7]"
+          } text-xl font-semibold mt-4`}
+        >
           Loading countries...
         </Text>
-      </View>
+      </SafeAreaView>
     );
   }
 
   // Render error state
   if (status === "failed") {
     return (
-      <View
+      <SafeAreaView
         className={`${
           theme === "light" ? "bg-white" : "bg-[#000F24]"
-        } flex-1 flex items-center justify-center bg-white dark:bg-[#000F24] p-4`}
+        } flex-1 flex items-center justify-center`}
       >
-        <Text className="text-xl font-semibold text-red-500">
+        <Text
+          className={`${
+            theme === "light" ? "text-[#1C1917]" : "text-[#F2F4F7]"
+          } text-xl font-semibold mt-4 `}
+        >
           Error loading countries...
         </Text>
-        <Text className="text-gray-700 dark:text-gray-300 mt-2">{error}</Text>
-      </View>
+        <Text
+          className={`${
+            theme === "light" ? "text-[#1C1917]" : "text-[#F2F4F7]"
+          } text-xl font-semibold mt-4 `}
+        >
+          {error}
+        </Text>
+      </SafeAreaView>
     );
   }
 
@@ -127,13 +142,13 @@ export default function Home() {
     >
       <FlatList
         data={groupedCountries}
-        keyExtractor={(country) => country.letter}
+        keyExtractor={(country, index) => `${index} ${country.letter}`}
         renderItem={({ item }) => (
           <View className={`ml-4 mt-4`}>
             <Text
               className={`${
                 theme === "light" ? "text-[#1C1917]" : "text-[#F2F4F7]"
-              } flex-1 text-base`}
+              } flex-1 text-3xl`}
             >
               {item?.letter}
             </Text>
@@ -194,6 +209,10 @@ export default function Home() {
           onShowResults={handleShowResults}
         />
       )}
+      <StatusBar
+        backgroundColor={theme == "light" ? "white" : "#000F24"}
+        style="light"
+      />
     </SafeAreaView>
   );
 }
@@ -223,8 +242,8 @@ const Header = ({
         source={theme == "light" ? icons.logo_dark : icons.logo_light}
         width={100}
         height={100}
-        resizeMethod="cover"
-        className={`w-24 h-6 ml-2`}
+        resizeMethod="contain"
+        className={`w-[150px] h-[35px] ml-2`}
       />
 
       <TouchableOpacity onPress={toggleTheme} className={`p-2 `}>
