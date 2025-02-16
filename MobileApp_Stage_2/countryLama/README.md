@@ -1,9 +1,9 @@
 <div align="center">
-  <br />
+  <!-- <br />
     <a href="https://github.com/cReAtOR0009/HNG-INTERNSHIP/tree/master/MobileApp_Stage_2/countryLama" target="_blank">
-      <img src="https://i.postimg.cc/5NR9bxFM/Sora-README.png" alt="CountryLama Banner">
+      <img src="https://img.shields.io/badge/-React_Native-black?style=for-the-badge&logoColor=white&logo=react&color=61DAFB" alt="CountryLama Banner">
     </a>
-  <br />
+  <br /> -->
 
   <div>
     <img src="https://img.shields.io/badge/-React_Native-black?style=for-the-badge&logoColor=white&logo=react&color=61DAFB" alt="React Native" />
@@ -40,7 +40,7 @@ Key highlights:
 - **Dark/Light Theme** for personalized viewing.
 - **Responsive Design** optimized for both iOS and Android.
 
-<a href="https://github.com/cReAtOR0009/HNG-INTERNSHIP/tree/master/MobileApp_Stage_2/countryLama" target="_blank"><img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/tree/master/MobileApp_Stage_2/countryLama/assets/images/Screens/Countrylama Home-.png" /></a>
+<a href="https://github.com/cReAtOR0009/HNG-INTERNSHIP/tree/master/MobileApp_Stage_2/countryLama" target="_blank"><img src="![https://github.com/cReAtOR0009/HNG-INTERNSHIP/tree/master/MobileApp_Stage_2/countryLama/assets/images/Screens/Countrylama Home-.png](https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/4483fab99f7123dd25aed6ed60976a4bc27d171d/MobileApp_Stage_2/countryLama/assets/images/Screens/Countrylama%20Home-.png?raw=true)" /></a>
 
 ## ⚙️ <a name="tech-stack">Tech Stack</a>
 
@@ -62,11 +62,9 @@ Key highlights:
   - **Git**: Version control.
   - **Visual Studio Code**: Code Editor.
 
-## 🔋 <a name="features">Features</a>
-
-
 **Project structure**
-.
+
+```.
 ├── app
 │   ├── (tabs)
 │   ├── country
@@ -114,14 +112,15 @@ Key highlights:
 ├── utils
 │   ├── filterUtils.js
 │   ├── groupCountries.js
+```
 
+**🔋CountryLama Features**:
 
-- **CountryLama**:
-
-  - View a list of all countries grouped alphabetically.
-  - Search for countries by name.
-  - Filter by continent, time zone, and language.
-  - Toggle between **Light** and **Dark** themes.
+- View a list of all countries grouped alphabetically.
+- Search for countries by name.
+- Filter by continent, time zone, and language.
+- Toggle between **Light** and **Dark** themes.
+- Change Language
 
 - **Country Details**:
 
@@ -192,23 +191,29 @@ expo start --ios
 ```
 
 ### 🖼️Screenshots
-
-<div align="center">
-
-Home Screen
-<br />
-<img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/tree/master/MobileApp_Stage_2/countryLama/assets/images/Screens/Countrylama Home-.png" alt="Home Screen" width="200">
-
-<br />
-Country Details
-<img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/tree/master/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama  country.png" alt="Country Details" width="200">
-
-<br />
-Dark Theme
-<img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/tree/master/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama Dark Filter.png" alt="Dark Theme" width="200">
-
-</div>
-
+<!-- 
+<div style="display: flex; justify-content: space-between;">
+  <div>
+    <p>Home Screen</p>
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/4483fab99f7123dd25aed6ed60976a4bc27d171d/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama%20Home.png?raw=true" alt="Home Screen" width="200">
+  </div>
+  <div>
+    <p>Home Screen: Dark Theme</p>
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/4483fab99f7123dd25aed6ed60976a4bc27d171d/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama%20dark%20Home.png?raw=true" alt="Country Details" width="200">
+  </div>
+  <div>
+    <p>Country Details Screen</p>
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/4483fab99f7123dd25aed6ed60976a4bc27d171d/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama%20%20country.png?raw=true" alt="Country Details" width="200">
+  </div>
+  <div>
+    <p>Language Filter Screen</p>
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/4483fab99f7123dd25aed6ed60976a4bc27d171d/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama%20language.png?raw=true" alt="Country Details" width="200">
+  </div>
+  <div>
+    <p>Dark Theme Filter Screen</p>
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/4483fab99f7123dd25aed6ed60976a4bc27d171d/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama%20Dark%20Filter.png?raw=true" alt="Dark Theme" width="200">
+  </div>
+</div> -->
 
 ### 🤝 Contributing
 
@@ -225,6 +230,7 @@ git clone https://github.com/cReAtOR0009/HNG-INTERNSHIP/tree/master/MobileApp_St
 ```bash
 git checkout -b feature/your-feature-name
 ```
+
 **3. Commit Your Changes:**
 
 ```bash
@@ -238,9 +244,8 @@ git push origin feature/your-feature-name
 ```
 
 **5. Open a Pull Request:**
-    -Describe your changes and why they are necessary.
+-Describe your changes and why they are necessary.
 
 ### 📄 License
 
 **This project is licensed under the MIT License. See the <a href="https://opensource.org/license/mit" target="_blank"> LICENSE file for details.**
-
