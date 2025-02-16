@@ -23,7 +23,7 @@ const Checkboxes = ({
 }) => {
   const theme = useSelector((state) => state.theme.theme);
   const dispatch = useDispatch();
-  const [modalHeight, setModalHeight] = useState(new Animated.Value(400)); // Initial height of the modal
+  const [modalHeight, setModalHeight] = useState(new Animated.Value(300)); // Initial height of the modal
   const [isTimeZoneOpen, setIsTimeZoneOpen] = useState(false);
   const [isContinentOpen, setIsContinentOpen] = useState(false);
 
