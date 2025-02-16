@@ -199,15 +199,11 @@ expo start --ios
   </div>
   <div>
     <p>Home Screen: Dark Theme</p>
-    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/HomeScreen-Dark.png?raw=true" alt="Country Details" width="200">
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/Change-Language.png?raw=true" alt="Country Details" width="200">
   </div>
   <div>
     <p>Country Details Screen</p>
     <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryScreen.png?raw=true" alt="Country Details" width="200">
-  </div>
-  <div>
-    <p>Changed Language Feature Applied</p>
-    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/Change-Language.png?raw=true" alt="Country Details" width="200">
   </div>
   <div>
     <p>Dark Theme Filter Modal</p>
@@ -215,6 +211,10 @@ expo start --ios
   </div> <div>
     <p>Change Language </p>
     <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/change-Language-light.png?raw=true" alt="Dark Theme" width="200">
+  </div>
+   <div>
+    <p>Change Language Modal</p>
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/HomeScreen-Dark.png?raw=true" alt="Country Details" width="200">
   </div>
 </div>
 
