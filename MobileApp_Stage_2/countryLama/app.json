@@ -3,9 +3,12 @@
     "name": "counryLama",
     "slug": "counryLama",
     "version": "1.0.0",
-    "plugins": [
-      "expo-router"
-    ],
+    "plugins": ["expo-router"],
+    "splash": {
+      "image": "./assets/icons/logo_dark.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "extra": {
       "router": {
         "origin": false
