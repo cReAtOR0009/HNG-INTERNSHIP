@@ -12,7 +12,7 @@
     <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="Tailwind CSS" />
   </div>
 
-  <h3 align="center">CountryLama Mobile App</h3>
+  <h3 align="center">CountryLama Mobile App : HNG INTERNSHIP -STAGE TWO TASK</h3>
 
    <div align="center">
      Explore the world with this React Native app! Discover countries, filter by continent, time zone, and language, and enjoy a seamless user experience.
@@ -191,29 +191,32 @@ expo start --ios
 ```
 
 ### 🖼️Screenshots
-<!-- 
+
 <div style="display: flex; justify-content: space-between;">
   <div>
     <p>Home Screen</p>
-    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/4483fab99f7123dd25aed6ed60976a4bc27d171d/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama%20Home.png?raw=true" alt="Home Screen" width="200">
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/HomeScreen.png?raw=true" alt="Home Screen" width="200">
   </div>
   <div>
     <p>Home Screen: Dark Theme</p>
-    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/4483fab99f7123dd25aed6ed60976a4bc27d171d/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama%20dark%20Home.png?raw=true" alt="Country Details" width="200">
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/HomeScreen-Dark.png?raw=true" alt="Country Details" width="200">
   </div>
   <div>
     <p>Country Details Screen</p>
-    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/4483fab99f7123dd25aed6ed60976a4bc27d171d/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama%20%20country.png?raw=true" alt="Country Details" width="200">
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryScreen.png?raw=true" alt="Country Details" width="200">
   </div>
   <div>
-    <p>Language Filter Screen</p>
-    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/4483fab99f7123dd25aed6ed60976a4bc27d171d/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama%20language.png?raw=true" alt="Country Details" width="200">
+    <p>Changed Language Feature Applied</p>
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/Change-Language.png?raw=true" alt="Country Details" width="200">
   </div>
   <div>
-    <p>Dark Theme Filter Screen</p>
-    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/4483fab99f7123dd25aed6ed60976a4bc27d171d/MobileApp_Stage_2/countryLama/assets/images/Screens/CountryLama%20Dark%20Filter.png?raw=true" alt="Dark Theme" width="200">
+    <p>Dark Theme Filter Modal</p>
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/Filter-Dark.png?raw=true" alt="Dark Theme" width="200">
+  </div> <div>
+    <p>Change Language </p>
+    <img src="https://github.com/cReAtOR0009/HNG-INTERNSHIP/blob/master/MobileApp_Stage_2/countryLama/assets/images/Screens/change-Language-light.png?raw=true" alt="Dark Theme" width="200">
   </div>
-</div> -->
+</div>
 
 ### 🤝 Contributing
 
