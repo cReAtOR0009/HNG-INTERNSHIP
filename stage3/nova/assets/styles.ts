@@ -1,18 +1,14 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  // openController: {
-  //   position: "absolute",
-  //   width:50,
-  //   height:50,
-  //   flex:1,
-  //   alignItems:"center",
-  //   bottom: 5,
-  //   right: 10,
-  //   padding: 10,
-  //   backgroundColor: "#007bff",
-  //   borderRadius: 10,
-  // },
+   openSetEnvironment: {
+    position: "absolute",
+    top: 5,
+    left: '50%',
+    padding: 10,
+    backgroundColor: "#007bff",
+    borderRadius: 10,
+   },
 
   loaderContainer:{
     flex:1,
@@ -155,7 +151,7 @@ export const styles = StyleSheet.create({
 
     openAddModel:{
       position:"absolute",
-      top:0,
+      top:5,
       right:10,
       padding:10,
       backgroundColor:"#007bff",
@@ -164,7 +160,7 @@ export const styles = StyleSheet.create({
     },
     openController: {
       position: "absolute",
-      top: 0,
+      top: 5,
       left: 10,
       padding: 10,
       backgroundColor: "#007bff",

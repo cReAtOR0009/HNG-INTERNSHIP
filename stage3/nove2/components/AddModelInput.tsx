@@ -52,7 +52,7 @@ const AddModelInput = ({ display, setDisplay }) => {
       <View style={styles.container}>
         <View>
           <TouchableOpacity onPress={() => setDisplay(false)}>
-          <AntDesign style={styles.closeBtn} name="closecircleo" size={30} color="white" />
+          <AntDesign style={styles.closeBtn} name="closecircleo" size={20} color="white" />
             {/* <Text style={styles.closeBtn}>X</Text> */}
           </TouchableOpacity>
         </View>
@@ -81,16 +81,23 @@ const AddModelInput = ({ display, setDisplay }) => {
 
 const styles = StyleSheet.create({
   container: {
-    display:"flex",
-    flexDirection:"column",
-    padding: 10,
-    paddingBlock: 10,
+    position: "absolute", // Ensures it does not take space in layout
+    top: "20%", // Adjust position as needed
+    left: "10%", // Keeps it centered horizontally
+    right: "10%", // Ensures it does not take full width
+    width: "80%", // Limits max width
+    maxWidth: 400, // Ensures it doesn’t stretch too wide
     backgroundColor: "#f0f0f0",
-    borderRadius: 5,
+    borderRadius: 10,
+    padding: 20,
+    elevation: 5, // Adds shadow effect on Android
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
-  InputContainer:{
-    paddingBlock:30,
-    marginTop:20
+  InputContainer: {
+    marginTop: 20,
   },
   input: {
     height: 40,
@@ -99,6 +106,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
     paddingHorizontal: 10,
+    backgroundColor: "#fff", // Makes input fields more visible
   },
   button: {
     backgroundColor: "#007bff",
@@ -110,17 +118,13 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
   },
-
   closeBtn: {
     position: "absolute",
-    color: "white",
-    backgroundColor:"#007bff",
-    borderRadius:10,
-    padding:5,
-    top: 0,
-    right: 10,
-    fontWeight:"bold",
-    fontSize:20
+    top: -15,
+    right: -15,
+    backgroundColor: "#007bff",
+    borderRadius: 15,
+    padding: 5,
   },
 });
 

@@ -22,6 +22,7 @@ import Controllers from "../../components/controllers/Controllers";
 import AddModelInput from "../../components/AddModelInput";
 import * as THREE from "three";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
+import EnvironmentPresetList from "../../components/controllers/EnvironmentPresetList";
 
 // Grid Component
 const Grid = () => {
@@ -51,76 +52,22 @@ export default function Index() {
   const models = useStore((state) => state.models);
   const [OrbitControls, events] = useControls();
   const activeModel = useStore((state) => state.activeModel);
-  const currentAnimation = models[activeModel].currentAnimation;
-  const setActiveModel = useStore((state) => state.setActiveModel);
-  const setCurrentAnimation = useStore((state) => state.setCurrentAnimation);
   const setAnimations = useStore((state) => state.setAnimations);
   const setPosition = useStore((state) => state.setPosition);
   const setRotation = useStore((state) => state.setRotation);
-  const [modelAssets, setModelAssets] = useState({});
   const [loading, setLoading] = useState(true);
   const addModelModal = useStore((state) => state.addModelModal);
   const controllerModal = useStore((state) => state.controllerModal);
   const setShowAddModel = useStore((state) => state.setShowAddModel);
   const setShowController = useStore((state) => state.setShowController);
-  // const controllerModal = useStore((state) => state.controllerModal);
+  const [environment, setEnvironment] = useState("dawn")
+  const [showEnvironments, setShowEnvironments] = useState(false)
 
+  
 
-  // Memoize resolved assets to avoid redundant loading
-  const resolveAsset = (asset) => {
-    if (typeof asset === "string" && asset.startsWith("http")) {
-      return asset; // If it's a URL, return as-is
-    } else {
-      return Asset.fromModule(asset).uri; // If it's a local file, resolve it
-    }
-  };
-
-  const resolvedAssets = useMemo(() => {
-    return {
-      "1": {
-        modelUrl: resolveAsset(
-          require("../../assets/67b9f1c5a6521e586b0d86f0.glb")
-        ),
-        animationUrl: resolveAsset(
-          require("../../assets/animations/F_Dances_001.glb")
-        ), // Direct URL (no need to resolve)
-        animationUrl2: resolveAsset(
-          require("../../assets/animations/F_Walk_002.glb")
-        ),
-        animationUrl3: resolveAsset(
-          require("../../assets/animations/F_Standing_Idle_001.glb")
-        ),
-        animationUrl4: `${
-          Asset.fromModule(
-            require("../../assets/animations/F_Talking_Variations_004.glb")
-          ).uri
-        }`,
-      },
-      "2": {
-        modelUrl: resolveAsset(require("../../assets/man.glb")), // Direct URL (no need to resolve)
-        animationUrl: resolveAsset(
-          require("../../assets/animations/M_Dances_007.glb")
-        ),
-        animationUrl2: resolveAsset(
-          require("../../assets/animations/M_Walk_001.glb")
-        ),
-        animationUrl3: resolveAsset(
-          require("../../assets/animations/M_Standing_Idle_001.glb")
-        ),
-        animationUrl4: `${
-          Asset.fromModule(
-            require("../../assets/animations/M_Talking_Variations_006.glb")
-          ).uri
-        }`,
-      },
-    };
-  }, [Object.keys(models).lenght]); // Ensure useMemo is used correctly
-
-  // Load assets once
   useEffect(() => {
-    setModelAssets(resolvedAssets);
     setLoading(false);
-  }, [resolvedAssets]);
+  }, [models]);
 
   // Handle movement with useCallback to avoid recreation
   const handleMove = useCallback(
@@ -199,7 +146,7 @@ export default function Index() {
           <directionalLight position={[5, 5, 5]} intensity={1} />
           {/* Environment Lighting */}
           <Environment
-            preset="city" // Use a preset environment
+            preset={environment} // Use a preset environment
             background // Set as scene background
             ground={{ height: 10, radius: 30, scale: 100 }} // Add ground for better positioning
           >
@@ -219,7 +166,7 @@ export default function Index() {
 
           {/* Add procedural sky */}
           <Sky
-            distance={5000} // Reduced distance for better visibility
+            distance={1000} // Reduced distance for better visibility
             sunPosition={[0, 1, 0]} // Position of the sun
             inclination={0} // Sun inclination
             azimuth={0.25} // Sun azimuth
@@ -228,18 +175,18 @@ export default function Index() {
           {/* Models */}
           <Suspense fallback={null}>
             {Object.entries(models)
-              .slice(0, 2) // Render the first 2 models using resolvedAssets
+              .slice(0, 2) // Render the first 2 models 
               .map(([id, model]) => {
                 return (
                   <Model
                     key={id}
                     id={id}
-                    modelUrl={modelAssets[id]?.modelUrl} // Use resolvedAssets for the first 2 models
+                    modelUrl={model.modelUrl} 
                     position={model.position}
-                    animationUrl={modelAssets[id]?.animationUrl}
-                    animationUrl2={modelAssets[id]?.animationUrl2}
-                    animationUrl3={modelAssets[id]?.animationUrl3}
-                    animationUrl4={modelAssets[id]?.animationUrl4}
+                    animationUrl={model.animationUrl}
+                    animationUrl2={model.animationUrl2}
+                    animationUrl3={model.animationUrl3}
+                    animationUrl4={model.animationUrl4}
                     rotation={model.rotation}
                     currentAnimation={model.currentAnimation}
                     setAnimations={setAnimations}
@@ -280,16 +227,13 @@ export default function Index() {
 
         {/* Gaming Controls */}
         {/* {controllerModal ? ( */}
-        <View style={styles.openController}>
-          <TouchableOpacity onPress={() => setShowController(!controllerModal)}>
-            <SimpleLineIcons name="game-controller" size={24} color="white" />
-          </TouchableOpacity>
-        </View>
+       
         <Controllers
           handleMove={handleMove}
           controllerModal={controllerModal}
           setShowController={setShowController}
         />
+        <AddModelInput display={addModelModal} setDisplay={setShowAddModel} />
 
         {/* show open add model  */}
         <View style={styles.openAddModel}>
@@ -297,7 +241,17 @@ export default function Index() {
             <AntDesign name="pluscircleo" size={24} color="white" />
           </TouchableOpacity>
         </View>
-        <AddModelInput display={addModelModal} setDisplay={setShowAddModel} />
+        <View style={styles.openController}>
+          <TouchableOpacity onPress={() => setShowController(!controllerModal)}>
+            <SimpleLineIcons name="game-controller" size={24} color="white" />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.openSetEnvironment}>
+          <TouchableOpacity onPress={() => setShowEnvironments(!showEnvironments)}>
+            <SimpleLineIcons name="map" size={24} color="white" />
+          </TouchableOpacity>
+        </View>
+        <EnvironmentPresetList setEnvironment={setEnvironment} showEnvironments={showEnvironments} />
         {/* <AnimationButtons />
         <DirectionalButtons />
         <ModelButtons /> */}

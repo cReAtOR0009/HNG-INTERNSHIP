@@ -5,8 +5,11 @@ import { useGLTF } from "@react-three/drei/native";
 const initialModels = {
   "1": {
     id: "1",
-    modelUrl: "./assets/femaleglb.glb",
-    animationUrl: "./assets/animations/F_Standing_Idle_001.glb",
+    modelUrl: "https://models.readyplayer.me/67bce41c9ee62277917246ae.glb",
+    animationUrl: "https://raw.githubusercontent.com/crazyramirez/babylonjs-ReadyPlayerMe-Animation-Combiner/b0b0289e015b94845f259bba9f4460e461218a1c/resources/models/animations/femenine/dance/F_Dances_001.glb",
+    animationUrl2: "https://raw.githubusercontent.com/crazyramirez/babylonjs-ReadyPlayerMe-Animation-Combiner/b0b0289e015b94845f259bba9f4460e461218a1c/resources/models/animations/femenine/locomotion/F_Walk_Jump_001.glb",
+    animationUrl3: "https://raw.githubusercontent.com/crazyramirez/babylonjs-ReadyPlayerMe-Animation-Combiner/b0b0289e015b94845f259bba9f4460e461218a1c/resources/models/animations/femenine/idle/F_Standing_Idle_Variations_001.glb",
+    animationUrl4: "https://raw.githubusercontent.com/crazyramirez/babylonjs-ReadyPlayerMe-Animation-Combiner/b0b0289e015b94845f259bba9f4460e461218a1c/resources/models/animations/femenine/expression/F_Talking_Variations_001.glb",
     position: [-1, 0, 0],
     rotation: [0, Math.PI / 2, 0],
     animations: [],
@@ -14,14 +17,18 @@ const initialModels = {
   },
   "2": {
     id: "2",
-    modelUrl: "./assets/man.glb",
-    animationUrl: "./assets/animations/M_Dances_003.glb",
+    modelUrl: "https://models.readyplayer.me/67bce3ee4d4cd8cc3d4eb712.glb",
+    animationUrl: "https://raw.githubusercontent.com/crazyramirez/babylonjs-ReadyPlayerMe-Animation-Combiner/b0b0289e015b94845f259bba9f4460e461218a1c/resources/models/animations/masculine/dance/M_Dances_007.glb",
+    animationUrl2: "https://raw.githubusercontent.com/crazyramirez/babylonjs-ReadyPlayerMe-Animation-Combiner/b0b0289e015b94845f259bba9f4460e461218a1c/resources/models/animations/masculine/locomotion/M_Walk_001.glb",
+    animationUrl3: "https://raw.githubusercontent.com/crazyramirez/babylonjs-ReadyPlayerMe-Animation-Combiner/b0b0289e015b94845f259bba9f4460e461218a1c/resources/models/animations/masculine/idle/M_Standing_Idle_001.glb",
+    animationUrl4: "https://raw.githubusercontent.com/crazyramirez/babylonjs-ReadyPlayerMe-Animation-Combiner/b0b0289e015b94845f259bba9f4460e461218a1c/resources/models/animations/masculine/expression/M_Talking_Variations_006.glb",
     position: [1, 0, 0],
     rotation: [0, -Math.PI / 2, 0],
     animations: [],
     currentAnimation: "M_Talking_Variations_006",
   },
 };
+
 
 
 export const useStore = create((set, get) => ({

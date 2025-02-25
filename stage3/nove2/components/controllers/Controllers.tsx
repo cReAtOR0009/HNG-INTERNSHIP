@@ -72,11 +72,7 @@ export default function Controllers({
           // { transform: [{ translateY: modalTranslateY }] },
         ]}
       >
-        <View style={styles.closeAddModel}>
-          <TouchableOpacity onPress={() => setShowController(false)}>
-            <AntDesign name="closecircleo" size={20} color="white" />
-          </TouchableOpacity>
-        </View>
+    
         <View style={styles.controllersContent}>
           <View style={styles.modelAnimationWrapper}>
             <ModelButtons />
